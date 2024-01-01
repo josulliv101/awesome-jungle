@@ -19,7 +19,8 @@ const config = {
     },
     extend: {
       backgroundImage: {
-        jungle: "url('/beach.jpg')",
+        jungle:
+          "linear-gradient(180deg,rgba(66,153,225, .65),hsla(0,0%,48%,0.05)), url('/beach.jpg')",
       },
       fontFamily: {
         sans: ["var(--font-sans)", ...fontFamily.sans],
