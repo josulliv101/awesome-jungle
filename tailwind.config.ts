@@ -19,6 +19,7 @@ const config = {
     },
     extend: {
       backgroundImage: {
+        leaf: "url(/leaves.png)",
         jungle:
           "linear-gradient(180deg,rgba(66,153,225, .65),hsla(0,0%,48%,0.05)), url('/beach.jpg')",
       },

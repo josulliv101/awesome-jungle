@@ -2,11 +2,14 @@ import Image from "next/image";
 import { PlusCircledIcon } from "@radix-ui/react-icons";
 
 import { cn } from "@/lib/utils";
+import { PreviewCard } from "./preview-card";
 
 export interface Album {
   name: string;
   oinks: number | string;
   pic: string;
+  id: string;
+  description: string;
 }
 
 interface AlbumArtworkProps extends React.HTMLAttributes<HTMLDivElement> {
@@ -34,14 +37,20 @@ export function AlbumArtwork({
           width={width}
           height={height}
           className={cn(
-            "h-[150px] w-[150px] object-cover transition-all hover:scale-105",
+            "h-[200px] w-[200px] object-cover transition-all hover:scale-115",
             aspectRatio === "portrait" ? "aspect-[3/4]" : "aspect-square"
           )}
         />
       </div>
       <div className="space-y-1 text-sm">
         <h3 className="font-medium leading-none flex justify-between">
-          <span>{album.name}</span>
+          <span>
+            <PreviewCard
+              id={album.id}
+              pic={album.pic}
+              description={album.description}
+            />
+          </span>
           <span>{album.oinks}</span>
         </h3>
       </div>

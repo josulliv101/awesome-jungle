@@ -8,7 +8,7 @@ import { Sidebar } from "@/components/sidebar";
 export default async function Home() {
   const refPeople = db
     .collection("entity")
-    .where("tags", "array-contains", "person")
+    .where("tags", "array-contains", "boston")
     .orderBy("oinks", "desc")
     .limit(8);
   const snapshotPeople = await refPeople.get();
@@ -17,19 +17,6 @@ export default async function Home() {
 
   snapshotPeople.forEach((doc: any) =>
     people.push({ id: doc.id, ...doc.data() })
-  );
-
-  const refPlaces = db
-    .collection("entity")
-    .where("tags", "array-contains", "city")
-    .orderBy("oinks", "desc")
-    .limit(8);
-  const snapshotPlaces = await refPlaces.get();
-
-  const places: Array<any> = [];
-
-  snapshotPlaces.forEach((doc: any) =>
-    places.push({ id: doc.id, ...doc.data() })
   );
 
   const refMovies = db
@@ -53,10 +40,13 @@ export default async function Home() {
           <Sidebar playlists={undefined} className="hidden lg:block" />
           <div className="col-span-3 lg:col-span-4 lg:border-l">
             <div className="px-12 py-6">
+              <h2 className="text-4xl font-semibold tracking-tight mb-8">
+                Boston
+              </h2>
               <div className="flex items-center justify-between">
                 <div className="space-y-1">
                   <h2 className="text-2xl font-semibold tracking-tight">
-                    People
+                    Most Awesome
                   </h2>
                   <p className="text-sm text-muted-foreground">
                     Find awesome people in arts & entertainment, sports,
@@ -65,20 +55,6 @@ export default async function Home() {
                 </div>
               </div>
               <Albums items={people} />
-            </div>
-            <div className="px-12 py-6">
-              <div className="flex items-center justify-between">
-                <div className="space-y-1">
-                  <h2 className="text-2xl font-semibold tracking-tight">
-                    Cities
-                  </h2>
-                  <p className="text-sm text-muted-foreground">
-                    Find awesome places - currently places are all in the Unites
-                    States.
-                  </p>
-                </div>
-              </div>
-              <Albums items={places} />
             </div>
             <div className="px-12 py-6">
               <div className="flex items-center justify-between">
