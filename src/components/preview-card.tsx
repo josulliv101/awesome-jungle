@@ -22,10 +22,10 @@ export function PreviewCard({
       <HoverCardTrigger asChild>
         <Button variant="link">@{id}</Button>
       </HoverCardTrigger>
-      <HoverCardContent side="top" className="w-80">
+      <HoverCardContent side="top" className="w-[420px]">
         <div className="flex justify-between space-x-4">
           <Avatar>
-            <AvatarImage src={pic} />
+            <AvatarImage src={pic} sizes="lg" />
             <AvatarFallback>VC</AvatarFallback>
           </Avatar>
           <div className="space-y-1">
