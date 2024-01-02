@@ -1,5 +1,5 @@
 export const siteConfig = {
-  name: "Awesome Jungle",
+  name: "Jungle of Awesome",
   url: "https://awesome-jungle.vercel.com",
   ogImage: "https://ui.shadcn.com/og.jpg",
   description: "Find awesome people, places & things.",

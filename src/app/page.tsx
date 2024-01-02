@@ -3,6 +3,7 @@ import { Button } from "@/components/ui/button";
 import { ThemeModeToggle } from "@/components/theme-mode-toggle";
 import { db } from "@/firebase";
 import { Albums } from "@/components/albums";
+import { Sidebar } from "@/components/sidebar";
 
 export default async function Home() {
   const refPeople = db
@@ -47,40 +48,53 @@ export default async function Home() {
   return (
     <main className="min-h-screen">
       <div className="h-[400px] bg-jungle bg-cover bg-bottom"></div>
-      <div className="px-12 py-6">
-        <div className="flex items-center justify-between">
-          <div className="space-y-1">
-            <h2 className="text-2xl font-semibold tracking-tight">People</h2>
-            <p className="text-sm text-muted-foreground">
-              Find awesome people in arts & entertainment, sports, politics,
-              science, academia, and more.
-            </p>
+      <div className="bg-background">
+        <div className="grid lg:grid-cols-5">
+          <Sidebar playlists={undefined} className="hidden lg:block" />
+          <div className="col-span-3 lg:col-span-4 lg:border-l">
+            <div className="px-12 py-6">
+              <div className="flex items-center justify-between">
+                <div className="space-y-1">
+                  <h2 className="text-2xl font-semibold tracking-tight">
+                    People
+                  </h2>
+                  <p className="text-sm text-muted-foreground">
+                    Find awesome people in arts & entertainment, sports,
+                    politics, science, academia, and more.
+                  </p>
+                </div>
+              </div>
+              <Albums items={people} />
+            </div>
+            <div className="px-12 py-6">
+              <div className="flex items-center justify-between">
+                <div className="space-y-1">
+                  <h2 className="text-2xl font-semibold tracking-tight">
+                    Cities
+                  </h2>
+                  <p className="text-sm text-muted-foreground">
+                    Find awesome places - currently places are all in the Unites
+                    States.
+                  </p>
+                </div>
+              </div>
+              <Albums items={places} />
+            </div>
+            <div className="px-12 py-6">
+              <div className="flex items-center justify-between">
+                <div className="space-y-1">
+                  <h2 className="text-2xl font-semibold tracking-tight">
+                    Movies
+                  </h2>
+                  <p className="text-sm text-muted-foreground">
+                    Find awesome movies.
+                  </p>
+                </div>
+              </div>
+              <Albums items={movies} />
+            </div>
           </div>
         </div>
-        <Albums items={people} />
-      </div>{" "}
-      <div className="px-12 py-6">
-        <div className="flex items-center justify-between">
-          <div className="space-y-1">
-            <h2 className="text-2xl font-semibold tracking-tight">Cities</h2>
-            <p className="text-sm text-muted-foreground">
-              Find awesome places - currently places are all in the Unites
-              States.
-            </p>
-          </div>
-        </div>
-        <Albums items={places} />
-      </div>
-      <div className="px-12 py-6">
-        <div className="flex items-center justify-between">
-          <div className="space-y-1">
-            <h2 className="text-2xl font-semibold tracking-tight">Movies</h2>
-            <p className="text-sm text-muted-foreground">
-              Find awesome movies.
-            </p>
-          </div>
-        </div>
-        <Albums items={movies} />
       </div>
     </main>
   );

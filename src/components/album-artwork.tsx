@@ -40,8 +40,10 @@ export function AlbumArtwork({
         />
       </div>
       <div className="space-y-1 text-sm">
-        <h3 className="font-medium leading-none">{album.name}</h3>
-        <p className="text-xs text-muted-foreground">{album.oinks}</p>
+        <h3 className="font-medium leading-none flex justify-between">
+          <span>{album.name}</span>
+          <span>{album.oinks}</span>
+        </h3>
       </div>
     </div>
   );
