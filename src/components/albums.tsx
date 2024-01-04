@@ -11,15 +11,15 @@ export function Albums({ items = [] }: { items: Array<Album> }) {
       <Separator className="my-4" />
       <div className="relative">
         <ScrollArea>
-          <div className="flex space-x-4 pb-8">
+          <div className="flex space-x-4 pb-4">
             {items.map((album) => (
               <AlbumArtwork
                 key={album.name}
                 album={album}
-                className="w-[200px]"
+                className="w-[160px]"
                 aspectRatio="square"
-                width={200}
-                height={200}
+                width={160}
+                height={160}
               />
             ))}
           </div>

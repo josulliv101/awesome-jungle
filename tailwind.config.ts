@@ -12,16 +12,18 @@ const config = {
   theme: {
     container: {
       center: true,
-      padding: "2rem",
+      padding: "1rem",
       screens: {
         "2xl": "1400px",
+        "3xl": "1720px",
       },
     },
     extend: {
       backgroundImage: {
         leaf: "url(/leaves.png)",
-        jungle:
-          "linear-gradient(180deg,rgba(66,153,225, .65),hsla(0,0%,48%,0.05)), url('/beach.jpg')",
+        jungle: "url('/beach.jpg')",
+        "jungle-overlay":
+          "linear-gradient(180deg,rgba(66,153,225, .65),hsla(0,0%,48%,0.10))",
       },
       fontFamily: {
         sans: ["var(--font-sans)", ...fontFamily.sans],

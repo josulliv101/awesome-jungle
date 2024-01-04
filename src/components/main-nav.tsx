@@ -4,6 +4,13 @@ import * as React from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 
+import { Salsa } from "next/font/google";
+
+const salsa = Salsa({
+  subsets: ["latin"],
+  weight: "400",
+});
+
 import { siteConfig } from "@/config/site";
 import { cn } from "@/lib/utils";
 import { Icons } from "@/components/icons";
@@ -14,9 +21,16 @@ export function MainNav() {
   return (
     <div className="mr-4 hidden md:flex">
       {/* <div className="w-[100px] h-[80px] bg-leaf bg-cover absolute" /> */}
-      <Link href="/" className="mr-6 flex items-center space-x-2">
-        {/* <Icons.logo className="h-6 w-6" /> */}
-        <span className="hidden font-bold sm:inline-block">
+      <Link
+        href="/"
+        className={`${salsa.className} mr-6 flex items-center space-x-3`}
+      >
+        <div
+          className={`text-md aspect-square bg-orange-500 text-white w-[36px] h-[36px] flex items-center justify-center rounded-sm`}
+        >
+          <span className="relative left-px">J/A</span>
+        </div>
+        <span className={`hidden font-normal sm:inline-block`}>
           {siteConfig.name}
         </span>
       </Link>
@@ -29,6 +43,15 @@ export function MainNav() {
           )}
         >
           About
+        </Link>
+        <Link
+          href="/docs"
+          className={cn(
+            "transition-colors hover:text-foreground/80",
+            pathname === "/docs" ? "text-foreground" : "text-foreground/60"
+          )}
+        >
+          Suggest Something Awesome
         </Link>
         <Link
           href="/docs/components"

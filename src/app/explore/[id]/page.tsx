@@ -15,10 +15,18 @@ import {
   DrawerTrigger,
 } from "@/components/ui/drawer";
 
-export default async function Home() {
+interface PageProps {
+  params: { id: string };
+  searchParams: { [key: string]: string | string[] | undefined };
+}
+
+export default async function Explore({ params }: PageProps) {
+  const { id } = params;
+
   const refPeople = db
     .collection("entity")
-    .where("tagMap.person", "==", true)
+    .where(`tagMap.${id}`, "==", true)
+    .where(`tagMap.person`, "==", true)
     .orderBy("oinks", "desc")
     .limit(8);
   const snapshotPeople = await refPeople.get();
@@ -31,7 +39,8 @@ export default async function Home() {
 
   const refMovies = db
     .collection("entity")
-    .where("tags", "array-contains", "movie")
+    .where(`tagMap.${id}`, "==", true)
+    .where(`tagMap.movie`, "==", true)
     .orderBy("oinks", "desc")
     .limit(8);
   const snapshotMovies = await refMovies.get();
@@ -63,14 +72,14 @@ export default async function Home() {
           <div className="col-span-3 lg:col-span-4 lg:border-l">
             <div className="px-12 pt-6">
               <h2 className="text-4xl font-semibold tracking-tight mb-8">
-                Find out why things are awesome.
+                {id}
               </h2>
             </div>
             <div className="px-12 py-6">
               <div className="flex items-center justify-between">
                 <div className="space-y-1">
                   <h2 className="text-2xl font-semibold tracking-tight">
-                    People
+                    Awesome People
                   </h2>
                   <p className="text-sm text-muted-foreground">
                     Find awesome people in arts & entertainment, sports,
