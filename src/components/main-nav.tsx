@@ -21,16 +21,13 @@ export function MainNav() {
   return (
     <div className="mr-4 hidden md:flex">
       {/* <div className="w-[100px] h-[80px] bg-leaf bg-cover absolute" /> */}
-      <Link
-        href="/"
-        className={`${salsa.className} mr-6 flex items-center space-x-3`}
-      >
+      <Link href="/" className={` mr-6 flex items-center space-x-3`}>
         <div
-          className={`text-md aspect-square bg-orange-500 text-white w-[36px] h-[36px] flex items-center justify-center rounded-sm`}
+          className={`${salsa.className} text-md aspect-square bg-orange-500 text-white w-[36px] h-[36px] flex items-center justify-center rounded-sm`}
         >
-          <span className="relative left-px">J/A</span>
+          <span className="relative left-px">WA</span>
         </div>
-        <span className={`hidden font-normal sm:inline-block`}>
+        <span className={`text-sm hidden font-normal sm:inline-block`}>
           {siteConfig.name}
         </span>
       </Link>

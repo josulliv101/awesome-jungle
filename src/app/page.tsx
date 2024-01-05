@@ -31,7 +31,7 @@ export default async function Home() {
 
   const refMovies = db
     .collection("entity")
-    .where("tags", "array-contains", "movie")
+    .where("tagMap.movie", "==", true)
     .orderBy("oinks", "desc")
     .limit(8);
   const snapshotMovies = await refMovies.get();
@@ -44,9 +44,9 @@ export default async function Home() {
 
   return (
     <main className="min-h-screen">
-      <div className="relative h-[500px] bg-jungle bg-cover bg-bottom">
+      <div className="relative h-[400px] bg-jungle bg-cover bg-center">
         <Image
-          className="absolute scale-50 -z-0 top-[60px] left-40"
+          className="absolute scale-50 -z-0 top-[180px] left-[50%] -translate-x-1/2"
           alt="guide"
           src="/hyena.png"
           width="185"
@@ -54,7 +54,7 @@ export default async function Home() {
         />
         <div className="absolute w-full h-full bg-jungle-overlay" />
         <div className="absolute left-1/2 top-1/3 -translate-x-1/2 px-4 py-2 font-normal text-xl text-white bg-orange-500">
-          Welcome to the Jungle
+          Discover why things are awesome.
         </div>
       </div>
       <div className="bg-background">
@@ -62,8 +62,8 @@ export default async function Home() {
           <Sidebar playlists={undefined} className="hidden lg:block" />
           <div className="col-span-3 lg:col-span-4 lg:border-l">
             <div className="px-12 pt-6">
-              <h2 className="text-4xl font-semibold tracking-tight mb-8">
-                Find out why things are awesome.
+              <h2 className="text-3xl font-semibold tracking-tight mb-8">
+                Explor the Awesome Jungle
               </h2>
             </div>
             <div className="px-12 py-6">

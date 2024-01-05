@@ -8,7 +8,7 @@ import { Separator } from "./ui/separator";
 export function Albums({ items = [] }: { items: Array<Album> }) {
   return (
     <>
-      <Separator className="my-4" />
+      <Separator className="mt-4 mb-0" />
       <div className="relative">
         <ScrollArea>
           <div className="flex space-x-4 pb-4">
