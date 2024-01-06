@@ -7,6 +7,7 @@ import {
   HoverCardContent,
   HoverCardTrigger,
 } from "@/components/ui/hover-card";
+import Link from "next/link";
 
 export function PreviewCard({
   id,
@@ -18,9 +19,14 @@ export function PreviewCard({
   description: string;
 }) {
   return (
-    <HoverCard closeDelay={300} openDelay={400}>
+    <HoverCard>
       <HoverCardTrigger asChild>
-        <Button variant="link">@{id}</Button>
+        <Link
+          href={`/profile/${id}`}
+          className="text-blue-400 hover:text-orange-500"
+        >
+          @{id}
+        </Link>
       </HoverCardTrigger>
       <HoverCardContent side="top" className="w-[420px]">
         <div className="flex justify-between space-x-4">
