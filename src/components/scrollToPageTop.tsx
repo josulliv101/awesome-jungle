@@ -10,6 +10,6 @@ export function ScrollToPageTop() {
       window.scrollTo({ top: 500, left: 0, behavior: "smooth" });
     }
     setMounted(true);
-  }, []);
+  }, [mounted]);
   return null;
 }
