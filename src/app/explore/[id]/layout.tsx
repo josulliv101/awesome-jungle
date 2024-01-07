@@ -1,23 +1,12 @@
 import Image from "next/image";
-import { Button } from "@/components/ui/button";
 import { Sidebar } from "@/components/sidebar";
 import { Breadcrumb } from "@/components/breadcrumb";
 
-function snakeToTitleCase(str: string) {
-  return str
-    .split("-")
-    .map((word) => word.charAt(0).toUpperCase() + word.slice(1).toLowerCase())
-    .join(" ");
-}
-
 interface PageProps {
-  params: { id: string; tag: string };
-  searchParams: { [key: string]: string | string[] | undefined };
   children: React.ReactNode;
 }
 
-export default function ExploreLayout({ params, children }: PageProps) {
-  const { id, tag } = params;
+export default function ExploreLayout({ children }: PageProps) {
   return (
     <main className="min-h-screen">
       <div className="relative h-[400px] bg-jungle bg-cover bg-center">
