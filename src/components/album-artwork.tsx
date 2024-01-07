@@ -30,8 +30,9 @@ export function AlbumArtwork({
   className,
   ...props
 }: AlbumArtworkProps) {
+  const minWidth = `min-w-[${width}px]`;
   return (
-    <div className={cn("mt-8 space-y-0", className)} {...props}>
+    <div className={cn("space-y-0", className)} {...props}>
       <div className="relative space-y-0 text-md pb-3">
         <h3 className="text-lg font-medium leading-none mb-6">
           <PreviewCard
@@ -41,9 +42,9 @@ export function AlbumArtwork({
           />
         </h3>
         <div className="relative text-md text-muted-foreground bg-muted px-3 pt-2 pb-2 h-[146px] overflow-hidden">
-          <div className="flex items-center justify-between font-medium font- mb-2">
-            <div className="opacity-70">
-              <em>why awesome?</em>
+          <div className="flex items-center justify-between font-medium mb-2">
+            <div className="">
+              <em>whyaweso.me?</em>
             </div>
             <Badge className="absolute top-2 right-4 bg-orange-500">
               <Star className="relative left-[-3px] text-white h-[.85rem] w-[.85rem] rotate-0 scale-100 transition-all dark:-rotate-90 dark:scale-0" />
@@ -57,7 +58,9 @@ export function AlbumArtwork({
           {album.description.substring(0, 138)}
         </div>
       </div>
-      <div className="relative overflow-hidden rounded-md">
+      <div
+        className={`flex-grow-1 flex-shrink-0 relative overflow-hidden rounded-md ${minWidth}`}
+      >
         <Image
           src={album.pic}
           alt={album.name}

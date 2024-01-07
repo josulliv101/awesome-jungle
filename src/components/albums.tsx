@@ -16,8 +16,8 @@ export function Albums({ items = [] }: { items: Array<Album> }) {
               <AlbumArtwork
                 key={album.name}
                 album={album}
-                className="w-[320px] object-cover"
-                aspectRatio="portrait"
+                className="w-[320px] object-cover mt-8"
+                aspectRatio="square"
                 width={320}
                 height={250}
               />

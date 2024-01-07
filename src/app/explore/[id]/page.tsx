@@ -16,6 +16,8 @@ import {
   DrawerTitle,
   DrawerTrigger,
 } from "@/components/ui/drawer";
+import Link from "next/link";
+import { Breadcrumb } from "@/components/breadcrumb";
 
 interface PageProps {
   params: { id: string };
@@ -37,7 +39,8 @@ export default async function Explore({ params }: PageProps) {
     .where(`tagMap.${id}`, "==", true)
     .where(`tagMap.person`, "==", true)
     .orderBy("oinks", "desc")
-    .limit(12);
+    .limit(6);
+
   const snapshotPeople = await refPeople.get();
 
   const people: Array<any> = [];
@@ -62,105 +65,82 @@ export default async function Explore({ params }: PageProps) {
 
   return (
     <>
-      <main className="min-h-screen">
-        <div className="relative h-[400px] bg-jungle bg-cover bg-center">
-          <Image
-            className="absolute scale-50 -z-0 top-[180px] left-[50%] -translate-x-1/2"
-            alt="guide"
-            src="/hyena.png"
-            width="185"
-            height="210"
-          />
-          <div className="absolute w-full h-full bg-jungle-overlay" />
-          <div className="absolute left-1/2 top-1/3 -translate-x-1/2 px-4 py-2 font-normal text-xl text-white bg-orange-500">
-            Discover why things are awesome.
-          </div>
-        </div>
-        <div className="bg-background">
-          <div className="grid lg:grid-cols-5">
-            <Sidebar playlists={undefined} className="hidden lg:block" />
-            <div className="col-span-3 lg:col-span-4 lg:border-l">
-              <div className="px-12 pt-12">
-                <h2 className="text-3xl font-semibold tracking-tight mb-4">
-                  {snakeToTitleCase(id)}
+      <Tabs defaultValue="account" className="w-full">
+        <TabsList>
+          <TabsTrigger value="account">Categories</TabsTrigger>
+          <TabsTrigger value="password">Bubble Chart</TabsTrigger>
+        </TabsList>
+        <TabsContent value="account" className="p-0 m-0">
+          <div className="mt-8">
+            <div className="flex items-center justify-between">
+              <div className="space-y-1 w-full">
+                <h2 className="flex items-center justify-start f-full text-2xl font-semibold tracking-tight">
+                  People
+                  <Link
+                    className="ml-4 text-sm text-muted-foreground font-normal"
+                    href={`/explore/${id}/person`}
+                  >
+                    ( View all )
+                  </Link>
                 </h2>
-                <Tabs defaultValue="account" className="w-full">
-                  <TabsList>
-                    <TabsTrigger value="account">Categories</TabsTrigger>
-                    <TabsTrigger value="password">Viz</TabsTrigger>
-                  </TabsList>
-                  <TabsContent value="account" className="p-0 m-0">
-                    <div className="mt-8">
-                      <div className="flex items-center justify-between">
-                        <div className="space-y-1">
-                          <h2 className="text-2xl font-semibold tracking-tight">
-                            People
-                          </h2>
-                          <p className="text-sm text-muted-foreground">
-                            Find awesome people in arts & entertainment, sports,
-                            politics, science, academia, and more.
-                          </p>
-                        </div>
-                      </div>
-                      <Albums items={people} />
-                    </div>
-                    <div className="py-8">
-                      <div className="flex items-center justify-between">
-                        <div className="space-y-1">
-                          <h2 className="text-2xl font-semibold tracking-tight">
-                            Movies
-                          </h2>
-                          <p className="text-sm text-muted-foreground">
-                            Find awesome movies.
-                          </p>
-                        </div>
-                      </div>
-                      <Albums items={movies} />
-                      <Drawer>
-                        <DrawerTrigger asChild>
-                          <Button variant="outline">Open Drawer</Button>
-                        </DrawerTrigger>
-                        <DrawerContent>
-                          <div className="mx-auto w-full max-w-sm">
-                            <DrawerHeader>
-                              <DrawerTitle>Move Goal</DrawerTitle>
-                              <DrawerDescription>
-                                Set your daily activity goal.
-                              </DrawerDescription>
-                            </DrawerHeader>
-                            <div className="p-4 pb-0">
-                              <div className="flex items-center justify-center space-x-2">
-                                <div className="flex-1 text-center">
-                                  <div className="text-7xl font-bold tracking-tighter">
-                                    1
-                                  </div>
-                                  <div className="text-[0.70rem] uppercase text-muted-foreground">
-                                    Calories/day
-                                  </div>
-                                </div>
-                              </div>
-                              <div className="mt-3 h-[120px]">content</div>
-                            </div>
-                            <DrawerFooter>
-                              <Button>Submit</Button>
-                              <DrawerClose asChild>
-                                <Button variant="outline">Cancel</Button>
-                              </DrawerClose>
-                            </DrawerFooter>
-                          </div>
-                        </DrawerContent>
-                      </Drawer>
-                    </div>
-                  </TabsContent>
-                  <TabsContent value="password">
-                    Change your password here.
-                  </TabsContent>
-                </Tabs>
+                <p className="text-sm text-muted-foreground">
+                  Find awesome people in arts & entertainment, sports, politics,
+                  science, academia, and more.
+                </p>
               </div>
             </div>
+            <Albums items={people} />
           </div>
-        </div>
-      </main>
+          <div className="py-8">
+            <div className="flex items-center justify-between">
+              <div className="space-y-1">
+                <h2 className="text-2xl font-semibold tracking-tight">
+                  Movies
+                </h2>
+                <p className="text-sm text-muted-foreground">
+                  Find awesome movies.
+                </p>
+              </div>
+            </div>
+            <Albums items={movies} />
+            <Drawer>
+              <DrawerTrigger asChild>
+                <Button variant="outline">Open Drawer</Button>
+              </DrawerTrigger>
+              <DrawerContent>
+                <div className="mx-auto w-full max-w-sm">
+                  <DrawerHeader>
+                    <DrawerTitle>Move Goal</DrawerTitle>
+                    <DrawerDescription>
+                      Set your daily activity goal.
+                    </DrawerDescription>
+                  </DrawerHeader>
+                  <div className="p-4 pb-0">
+                    <div className="flex items-center justify-center space-x-2">
+                      <div className="flex-1 text-center">
+                        <div className="text-7xl font-bold tracking-tighter">
+                          1
+                        </div>
+                        <div className="text-[0.70rem] uppercase text-muted-foreground">
+                          Calories/day
+                        </div>
+                      </div>
+                    </div>
+                    <div className="mt-3 h-[120px]">content</div>
+                  </div>
+                  <DrawerFooter>
+                    <Button>Submit</Button>
+                    <DrawerClose asChild>
+                      <Button variant="outline">Cancel</Button>
+                    </DrawerClose>
+                  </DrawerFooter>
+                </div>
+              </DrawerContent>
+            </Drawer>
+          </div>
+        </TabsContent>
+        <TabsContent value="password">Change your password here.</TabsContent>
+      </Tabs>
     </>
   );
 }
