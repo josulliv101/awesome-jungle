@@ -16,8 +16,8 @@ export function AlbumGrid({ items = [] }: { items: Array<Album> }) {
               album={album}
               className="flex flex-row-reverse items-end"
               aspectRatio="square"
-              width={146}
-              height={146}
+              width={120}
+              height={120}
             />
           ))}
         </div>

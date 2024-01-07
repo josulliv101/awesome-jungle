@@ -11,14 +11,13 @@ function snakeToTitleCase(str: string) {
 }
 
 export function Breadcrumb() {
-  const { id, tag } = useParams();
-  console.log("params", id, tag);
+  const { hub, tags, id = hub, tag } = useParams();
+
+  console.log("Breadcrumb", id, hub, tags);
   return (
     <>
       {snakeToTitleCase(Array.isArray(id) ? id.join(" / ") : id)}
-      {typeof tag === "string"
-        ? ` / ${snakeToTitleCase(tag)}`
-        : tag && tag.join(" / ")}
+      {Array.isArray(tags) && tags.map((tag) => ` > ${snakeToTitleCase(tag)}`)}
     </>
   );
 }
