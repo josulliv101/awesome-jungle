@@ -7,7 +7,7 @@ import { NavSubTags } from "@/components/nav-sub-tags";
 
 interface PageProps {
   params: { hub: string; tags: Array<keyof TagsConfig> };
-  searchParams: { [key: string]: string | string[] | undefined };
+  // searchParams?: { [key: string]: string | string[] | undefined };
   children: React.ReactNode;
 }
 
