@@ -21,6 +21,6 @@ export async function addWhyAwesomeReasons(
   await Promise.all(promises).then(() => {
     console.log("DONE", profileId);
   });
-  revalidatePath("/profile/[profileId]");
+  revalidatePath(`/profile/${profileId}`);
   // redirect("/");
 }
