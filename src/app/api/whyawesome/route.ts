@@ -1,12 +1,12 @@
 import { NextApiRequest, NextApiResponse } from "next";
-import { NextRequest, NextResponse } from "next/server";
+import { NextResponse } from "next/server";
 import OpenAI from "openai";
 
 const openai = new OpenAI({
   apiKey: process.env.OPENAI_API_KEY,
 });
 
-export async function GET(request: NextRequest, response: NextResponse) {
+export async function GET(request: NextApiRequest, response: NextApiResponse) {
   if (typeof request.url !== "string") {
     throw new Error(`Issue with accessing the request.url.`);
   }
