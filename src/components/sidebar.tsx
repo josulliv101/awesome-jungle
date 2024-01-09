@@ -21,13 +21,29 @@ export function Sidebar({
   return (
     <div className={cn("pb-12", className)}>
       <div className="space-y-4 py-4">
+        <div className="px-3 pt-2 pb-0">
+          <div className="space-y-1">
+            {[{ label: "Home", path: "/" }].map(({ label, path }) => (
+              <Button
+                key={label}
+                variant={pathName === path ? "secondary" : "ghost"}
+                className="w-full justify-start"
+                asChild
+              >
+                <Link href={path} scroll={true}>
+                  {label}
+                </Link>
+              </Button>
+            ))}
+          </div>
+        </div>
         <div className="px-3 py-2">
           <h2 className="mb-2 px-4 text-lg font-semibold tracking-tight">
             Explore Cities
           </h2>
           <div className="space-y-1">
             {[
-              { label: "All", path: "/" },
+              // { label: "All", path: "/" },
               { label: "Boston", path: "/explore2/boston" },
               { label: "New York City", path: "/explore2/new-york-city" },
               { label: "Chicago", path: "/explore2/chicago" },

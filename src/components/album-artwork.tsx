@@ -33,8 +33,23 @@ export function AlbumArtwork({
   const minWidth = `min-w-[${width}px]`;
   return (
     <div className={cn("space-y-0", className)} {...props}>
-      <div className="relative space-y-0 text-md pb-3">
-        <h3 className="text-lg font-medium leading-none mb-6">
+      {" "}
+      <div
+        className={`flex-grow-1 flex-shrink-0 relative overflow-hidden rounded-md ${minWidth}`}
+      >
+        <Image
+          src={album.pic}
+          alt={album.name}
+          width={width}
+          height={height}
+          className={cn(
+            "border-gray-200 border rounded-sm object-cover transition-all ease-in-out duration-500 hover:scale-105",
+            aspectRatio === "portrait" ? "aspect-[3/4]" : "aspect-square"
+          )}
+        />
+      </div>
+      <div className="relative space-y-0 text-md pt-4">
+        <h3 className="text-lg font-medium leading-none mb-4">
           <PreviewCard
             description={album.description}
             id={album.id}
@@ -57,20 +72,6 @@ export function AlbumArtwork({
 
           {album.description.substring(0, 138)}
         </div>
-      </div>
-      <div
-        className={`flex-grow-1 flex-shrink-0 relative overflow-hidden rounded-md ${minWidth}`}
-      >
-        <Image
-          src={album.pic}
-          alt={album.name}
-          width={width}
-          height={height}
-          className={cn(
-            "border-gray-200 border rounded-sm object-cover transition-all ease-in-out duration-500 hover:scale-105",
-            aspectRatio === "portrait" ? "aspect-[3/4]" : "aspect-square"
-          )}
-        />
       </div>
     </div>
   );

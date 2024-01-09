@@ -21,7 +21,7 @@ const config = {
     extend: {
       backgroundImage: {
         leaf: "url(/leaves.png)",
-        jungle: "url('/landscape009.jpg')",
+        jungle: "url('/landscape003.jpg')",
         "jungle-overlay":
           "linear-gradient(180deg,rgba(66,153,225, .65),hsla(0,0%,48%,0.10))",
       },
