@@ -28,10 +28,17 @@ export function FormEmptyProfile(props: { name: string; profileId: string }) {
   const handleGenerateSuggestions = async () => {
     return await fetch(`/api/whyawesome?name=${props.name}`)
       .then((resp) => resp.json())
-      .then((json: { data: string[] }) => {
+      .then((json: { data: string[] | { reasons: string[] } }) => {
         const { data } = json;
         console.log("data", data);
-        setSuggestions(data);
+        let results: string[] = [];
+        if (!Array.isArray(data) && data?.reasons) {
+          // normalize data format
+          results = data?.reasons;
+        } else if (Array.isArray(data)) {
+          results = data;
+        }
+        setSuggestions(results);
       });
   };
 
@@ -114,7 +121,7 @@ export function FormPotentialReasons({
       setSelectedSuggestions([id, ...selectedSuggestions]);
     }
   };
-
+  console.log("125: suggestions", suggestions);
   return (
     <Card className="border-none">
       <CardHeader>

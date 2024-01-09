@@ -59,7 +59,7 @@ export function AlbumArtwork({
         <div className="relative text-md text-muted-foreground bg-muted px-3 pt-2 pb-2 h-[146px] overflow-hidden">
           <div className="flex items-center justify-between font-medium mb-2">
             <div className="">
-              <em>whyaweso.me?</em>
+              <em>top reason</em>
             </div>
             <Badge className="absolute top-2 right-4 bg-orange-500">
               <Star className="relative left-[-3px] text-white h-[.85rem] w-[.85rem] rotate-0 scale-100 transition-all dark:-rotate-90 dark:scale-0" />

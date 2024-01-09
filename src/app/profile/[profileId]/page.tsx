@@ -29,7 +29,6 @@ import {
 } from "@/components/ui/drawer";
 import { Badge } from "@/components/ui/badge";
 import { Sparkle, Star } from "lucide-react";
-import { ButtonGenerateSuggestions } from "./ButtonGenerateSuggestions";
 import { FormEmptyProfile } from "./FormEmptyProfile";
 
 interface PageProps {
@@ -104,7 +103,7 @@ export default async function Profile({ params }: PageProps) {
                         return (
                           <div
                             key={index}
-                            className="flex items-center justify-between space-x-2 border px-4 py-2 rounded-sm"
+                            className="flex items-center justify-between space-x-2 border px-4 py-2 rounded-sm hover:bg-gray-100"
                           >
                             <Badge className="bg-orange-500">
                               <Sparkle className="relative left-[-3px] text-white h-[.85rem] w-[.85rem] rotate-0 scale-100 transition-all dark:-rotate-90 dark:scale-0" />
@@ -112,7 +111,7 @@ export default async function Profile({ params }: PageProps) {
                             </Badge>
                             <Label
                               htmlFor={`reason-${index}`}
-                              className="flex flex-col space-y-1 px-6"
+                              className="flex flex-col space-y-1 px-6 cursor-pointer"
                             >
                               <span className="hidden">Social Champion</span>
                               <span className="text-lg font-normal leading-normal text-muted-foreground">
