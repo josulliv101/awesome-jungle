@@ -1,5 +1,5 @@
 import { NextApiRequest, NextApiResponse } from "next";
-import { NextResponse } from "next/server";
+import { NextRequest, NextResponse } from "next/server";
 
 var sleepSetTimeout_ctrl: NodeJS.Timeout;
 
@@ -18,7 +18,7 @@ const mockData = [
   "She is a philanthropist, striving to make a positive impact in the world through her charity work and activism.",
 ];
 
-export async function GET(request: NextApiRequest, response: NextApiResponse) {
+export async function GET(request: NextRequest, response: NextResponse) {
   if (typeof request.url !== "string") {
     throw new Error(`Issue with accessing the request.url.`);
   }
