@@ -56,13 +56,14 @@ export function AlbumArtwork({
             pic={album.pic}
           />
         </h3>
-        <div className="relative text-md text-muted-foreground bg-muted px-3 pt-2 pb-2 h-[146px] overflow-hidden">
+        <div className="relative text-md text-muted-foreground bg-muted px-3 pt-2 pb-2 h-[168px] overflow-hidden">
           <div className="flex items-center justify-between font-medium mb-2">
-            <div className="">
+            <div className="opacity-0">
               <em>top reason</em>
             </div>
             <Badge className="absolute top-2 right-4 bg-orange-500">
-              <Star className="relative left-[-3px] text-white h-[.85rem] w-[.85rem] rotate-0 scale-100 transition-all dark:-rotate-90 dark:scale-0" />
+              top reason{" "}
+              <Star className="relative ml-2 left-[-3px] text-white h-[.85rem] w-[.85rem] rotate-0 scale-100 transition-all dark:-rotate-90 dark:scale-0" />
               {album.oinks}
             </Badge>
           </div>
@@ -71,6 +72,7 @@ export function AlbumArtwork({
           </span> */}
 
           {album.description.substring(0, 138)}
+          <div className="relative top-1 text-sm text-right">View All</div>
         </div>
       </div>
     </div>

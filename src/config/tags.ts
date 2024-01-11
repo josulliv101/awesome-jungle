@@ -18,6 +18,12 @@ export const tagsConfig = {
       professor: true,
     },
   },
+  movie: {
+    comedy: true,
+    action: true,
+    thriller: true,
+    documentary: true,
+  },
   person: {
     politics: true,
     musician: true,

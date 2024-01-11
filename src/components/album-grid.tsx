@@ -9,7 +9,7 @@ export function AlbumGrid({ items = [] }: { items: Array<Album> }) {
   return (
     <>
       <div className="relative">
-        <div className="grid gap-2 sm:grid-cols-3">
+        <div className="grid gap-6 sm:grid-cols-3">
           {items.map((album) => (
             <AlbumArtwork
               key={album.name}

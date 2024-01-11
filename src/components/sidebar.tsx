@@ -1,10 +1,12 @@
 "use client";
 
-import { usePathname } from "next/navigation";
+import { useParams, usePathname } from "next/navigation";
+import { ChevronRight, Star } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { Button } from "./ui/button";
 import { ScrollArea } from "./ui/scroll-area";
 import Link from "next/link";
+import { Fragment } from "react";
 
 export type Playlist = (typeof playlistsData)[number];
 
@@ -13,11 +15,20 @@ interface SidebarProps extends React.HTMLAttributes<HTMLDivElement> {
   playlists?: Playlist[];
 }
 
+const subNav = [
+  { id: "person", label: "People" },
+  { id: "restaraunt", label: "Restaraunts" },
+  { id: "night-life", label: "Night Life" },
+  { id: "movie", label: "Movies" },
+];
+
 export function Sidebar({
   className,
   playlists = playlistsData,
 }: SidebarProps) {
   const pathName = usePathname();
+  const params = useParams();
+  console.log("params", params);
   return (
     <div className={cn("pb-12", className)}>
       <div className="space-y-4 py-4">
@@ -39,25 +50,55 @@ export function Sidebar({
         </div>
         <div className="px-3 py-2">
           <h2 className="mb-2 px-4 text-lg font-semibold tracking-tight">
-            Explore Cities
+            Explore
           </h2>
           <div className="space-y-1">
             {[
-              // { label: "All", path: "/" },
-              { label: "Boston", path: "/explore2/boston" },
-              { label: "New York City", path: "/explore2/new-york-city" },
-              { label: "Chicago", path: "/explore2/chicago" },
-            ].map(({ label, path }) => (
-              <Button
-                key={label}
-                variant={pathName === path ? "secondary" : "ghost"}
-                className="w-full justify-start"
-                asChild
-              >
-                <Link href={path} scroll={true}>
-                  {label}
-                </Link>
-              </Button>
+              { label: "All", path: "/", id: "all" },
+              { label: "Boston", path: "/explore2/boston", id: "boston" },
+              {
+                label: "New York City",
+                path: "/explore2/new-york-city",
+                id: "new-york-city",
+              },
+              {
+                label: "Chicago",
+                path: "/explore2/chicago",
+                id: "chicago",
+              },
+            ].map(({ label, id, path }) => (
+              <Fragment key={id}>
+                {" "}
+                <Button
+                  key={label}
+                  variant={pathName === path ? "secondary" : "ghost"}
+                  className="w-full justify-start"
+                  asChild
+                >
+                  <Link href={path}>{label}</Link>
+                </Button>
+                {params.hub === id && (
+                  <>
+                    {subNav.map((item) => (
+                      <Button
+                        key={item.id}
+                        variant={
+                          pathName === `${path}/${item.id}`
+                            ? "secondary"
+                            : "ghost"
+                        }
+                        className="w-full justify-start"
+                        asChild
+                      >
+                        <Link href={`/explore2/${params.hub}/${item.id}`}>
+                          <ChevronRight className="relative mr-2 left-[0px] h-[.85rem] w-[.85rem] rotate-0 scale-100 transition-all dark:-rotate-90 dark:scale-0" />
+                          {item.label}
+                        </Link>
+                      </Button>
+                    ))}
+                  </>
+                )}
+              </Fragment>
             ))}
           </div>
         </div>
