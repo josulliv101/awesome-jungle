@@ -34,7 +34,7 @@ import Link from "next/link";
 import { ReactNode } from "react";
 
 interface PageProps {
-  params: { profileId: string };
+  params?: { profileId: string };
   searchParams?: { [key: string]: string | string[] | undefined };
   children?: ReactNode;
 }
