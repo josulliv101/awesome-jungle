@@ -39,8 +39,8 @@ interface PageProps {
   children?: ReactNode;
 }
 
-export default function Profile({ children, params }: PageProps) {
-  const { profileId } = params;
+export default function ProfileLayout({ children, params }: PageProps) {
+  // const { profileId } = params;
 
   return (
     <>
