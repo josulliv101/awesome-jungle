@@ -35,11 +35,11 @@ import { ReactNode } from "react";
 
 interface PageProps {
   params: { profileId: string };
-  searchParams: { [key: string]: string | string[] | undefined };
-  children: ReactNode;
+  searchParams?: { [key: string]: string | string[] | undefined };
+  children?: ReactNode;
 }
 
-export default async function Profile({ children, params }: PageProps) {
+export default function Profile({ children, params }: PageProps) {
   const { profileId } = params;
 
   return (
