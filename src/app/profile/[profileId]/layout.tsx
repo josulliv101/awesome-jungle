@@ -34,12 +34,10 @@ import Link from "next/link";
 import { ReactNode } from "react";
 
 interface PageProps {
-  params?: { profileId: string };
-  searchParams?: { [key: string]: string | string[] | undefined };
-  children?: ReactNode;
+  children: React.ReactNode;
 }
 
-export default function ProfileLayout({ children, params }: PageProps) {
+export default function ProfileLayout({ children }: PageProps) {
   // const { profileId } = params;
 
   return (
